@@ -6,18 +6,19 @@
  * @return {Number} sum
  */
 function _sumFibs(maxFibValue) {
-  var sum = 0;
+  var sum = 2;
   let fibArray = [1, 2];
 
   if (maxFibValue > 2) {
-    do {
-
+    while (fibArray[fibArray.length - 1] <= maxFibValue) {
       let length = fibArray.length;
-      fibArray.push(fibArray[length - 2] + fibArray[length - 1]);
+      let current = fibArray[length - 2] + fibArray[length - 1];
+      fibArray.push(current);
 
-    } while (fibArray[fibArray.length - 1] < maxFibValue);
-
-    sum = fibArray.filter(x => x <= maxFibValue).filter(x => x % 2 === 0).reduce((x, sum) => sum += x);
+      if ((current % 2 === 0) && (current <= maxFibValue)) {
+        sum += current;
+      }
+    }
 
   } else {
     return maxFibValue;
