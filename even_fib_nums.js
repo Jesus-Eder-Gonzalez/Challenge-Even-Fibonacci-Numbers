@@ -35,18 +35,21 @@ function _highestFibonacciNumber(maxFibValue) {
 
   if (maxFibValue > 2) {
     do {
-
       let length = fibArray.length;
       fibArray.push(fibArray[length - 2] + fibArray[length - 1]);
-
     } while (fibArray[fibArray.length - 1] < maxFibValue);
 
-    highest = fibArray.filter(x => x <= maxFibValue).pop();
+    let last = fibArray.pop();
+
+    if (last > maxFibValue) {
+      highest = fibArray.pop();
+    } else {
+      highest = last;
+    }
 
   } else {
     return maxFibValue;
   }
-
   return highest;
 };
 

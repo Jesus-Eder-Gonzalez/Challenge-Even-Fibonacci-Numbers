@@ -39,5 +39,10 @@ describe( 'Highest number in Fibonacci sequence', function() {
   });
 });
 
-
+describe( 'Highest number in Fibonacci sequence', function() {
+  it( 'should return the highest Fibonacci number less than the given input', function() {
+    var highest = fibonnaciNums.highestFibonacciNumber( 1 );
+    highest.should.equal( 1 );
+  });
+});
 //STRETCH GOALS: Define another way you could write a function for a fibonacci number and write passing tests
