@@ -5,23 +5,51 @@
  * @param  {Number} maxFibValue
  * @return {Number} sum
  */
-function _sumFibs( maxFibValue ) {
-  var sum = 0;
+function _sumFibs(maxFibValue) {
+  var sum = 2;
+  let fibArray = [1, 2];
 
-  // do your work here
+  if (maxFibValue > 2) {
+    while (fibArray[fibArray.length - 1] <= maxFibValue) {
+      let length = fibArray.length;
+      let current = fibArray[length - 2] + fibArray[length - 1];
+      fibArray.push(current);
+
+      if ((current % 2 === 0) && (current <= maxFibValue)) {
+        sum += current;
+      }
+    }
+
+  } else {
+    return maxFibValue;
+  }
 
   return sum;
 }
 
+
 // bonus round
-function _highestFibonacciNumber (maxFibValue){
+function _highestFibonacciNumber(maxFibValue) {
   var highest = 0;
+  let fibArray = [1, 2];
 
-  //define your base case, validate your input
+  if (maxFibValue > 2) {
+    do {
+      let length = fibArray.length;
+      fibArray.push(fibArray[length - 2] + fibArray[length - 1]);
+    } while (fibArray[fibArray.length - 1] < maxFibValue);
 
+    let last = fibArray.pop();
 
-  //do your work here
+    if (last > maxFibValue) {
+      highest = fibArray.pop();
+    } else {
+      highest = last;
+    }
 
+  } else {
+    return maxFibValue;
+  }
   return highest;
 };
 
@@ -30,6 +58,6 @@ function _highestFibonacciNumber (maxFibValue){
  * You must be at least level 10 to understand.
  */
 module.exports = {
-  sumFibs : _sumFibs,
-  highestFibonacciNumber : _highestFibonacciNumber
+  sumFibs: _sumFibs,
+  highestFibonacciNumber: _highestFibonacciNumber
 };
